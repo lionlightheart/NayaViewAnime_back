@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    // Aquí agregamos el trigger
+    triggers {
+        githubPush()
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -14,7 +20,6 @@ pipeline {
         stage('Build Docker') {
             steps {
                 script {
-                    // Build la imagen
                     sh 'docker build -t nayaview_django .'
                 }
             }
@@ -23,7 +28,6 @@ pipeline {
         stage('Run Django container') {
             steps {
                 script {
-                    // Si el contenedor no existe, crear y levantar
                     sh '''
                     if [ ! "$(docker ps -aq -f name=nayaview_django)" ]; then
                         docker run -d \
@@ -52,3 +56,4 @@ pipeline {
         }
     }
 }
+

@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    // Aquí agregamos el trigger
+    // Trigger con push a GitHub
     triggers {
         githubPush()
     }
@@ -29,15 +29,18 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    if [ ! "$(docker ps -aq -f name=nayaview_django)" ]; then
-                        docker run -d \
-                          --name nayaview_django \
-                          --network django_red \
-                          -p 8000:8000 \
-                          nayaview_django
-                    else
-                        docker start nayaview_django
+                    # Si existe el contenedor, lo detenemos y eliminamos
+                    if [ "$(docker ps -aq -f name=nayaview_django)" ]; then
+                        docker stop nayaview_django
+                        docker rm nayaview_django
                     fi
+
+                    # Ejecutamos un nuevo contenedor con la última imagen
+                    docker run -d \
+                      --name nayaview_django \
+                      --network django_red \
+                      -p 8000:8000 \
+                      nayaview_django
                     '''
                 }
             }

@@ -2,10 +2,15 @@ pipeline {
   agent any
   stages {
     stage('Checkout') {
-      steps {
-        git(url: 'https://github.com/lionlightheart/NayaViewAnime_back.git', branch: 'main', credentialsId: 'github-token')
-      }
+    steps {
+        git(
+            url: 'https://github.com/lionlightheart/NayaViewAnime_back.git', 
+            branch: 'main', 
+            credentialsId: 'github-token'
+        )
     }
+}
+
 
     stage('Build Docker') {
       steps {

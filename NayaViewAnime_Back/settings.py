@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-+2y32d^n@av2jehgdpx&5n#lblpb2ixm3kno1s3opzev7m*&5g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["local.nayaview.com"]
+ALLOWED_HOSTS = ["local.nayaview.com:8000"]
 
 
 # Application definition

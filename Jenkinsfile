@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/lionlightheart/NayaViewAnime_back.git'
+        git(url: 'https://github.com/lionlightheart/NayaViewAnime_back.git', branch: 'main')
       }
     }
 

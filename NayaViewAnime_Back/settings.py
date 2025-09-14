@@ -38,7 +38,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "django.contrib.sites",  # necesario para allauth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",  # ejemplo Google
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
 ]
+
+SITE_ID = 1  # necesario para allauth
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

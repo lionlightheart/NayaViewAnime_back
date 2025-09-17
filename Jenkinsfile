@@ -26,25 +26,29 @@ pipeline {
         }
 
         stage('Run Django container') {
-            steps {
-                script {
-                    sh '''
-                    # Si existe el contenedor, lo detenemos y eliminamos
-                    if [ "$(docker ps -aq -f name=nayaview_django)" ]; then
-                        docker stop nayaview_django
-                        docker rm nayaview_django
-                    fi
+    steps {
+        script {
+            sh '''
+            # Detener y eliminar contenedor existente si existe
+            if [ "$(docker ps -aq -f name=nayaview_django)" ]; then
+                echo "Deteniendo contenedor existente..."
+                docker stop nayaview_django
+                docker rm nayaview_django
+            fi
 
-                    # Ejecutamos un nuevo contenedor con la última imagen
-                    docker run -d \
-                      --name nayaview_django \
-                      --network django_red \
-                      -p 8000:8000 \
-                      nayaview_django
-                    '''
-                }
-            }
+            # Ejecutar un nuevo contenedor con la última imagen y .env
+            echo "Ejecutando contenedor Django..."
+            docker run -d \
+                --name nayaview_django \
+                --network django_red \
+                --env-file /home/lionlight/nayaview_anime/.env \
+                -p 8000:8000 \
+                nayaview_django
+            '''
         }
+    }
+}
+
 
         stage('Run Migrations') {
             steps {

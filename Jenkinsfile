@@ -38,10 +38,10 @@ pipeline {
 
             # Ejecutar un nuevo contenedor con la última imagen y .env
             echo "Ejecutando contenedor Django..."
-            docker run -d \
-                --name nayaview_django \
+            docker run -d --name nayaview_django \
                 --network django_red \
-                --env-file /home/lionlight/nayaview_anime/.env \
+                -v /home/lionlight/nayaview_anime/.env:/tmp/.env \
+                --env-file /tmp/.env \
                 -p 8000:8000 \
                 nayaview_django
             '''

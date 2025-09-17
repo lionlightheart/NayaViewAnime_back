@@ -1,0 +1,7 @@
+Hola {{ user.username }}!
+
+Gracias por registrarte en Nayaview.
+
+Confirma tu correo aquí:
+
+{{ activate_url  }}

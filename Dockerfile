@@ -22,4 +22,5 @@ COPY . /app/
 EXPOSE 8000
 
 # Comando por defecto
-CMD ["gunicorn", "NayaViewAnime_Back.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
+CMD ["gunicorn", "NayaViewAnime_Back.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3", "--log-level", "debug", "--access-logfile", "-", "--error-logfile", "-"]
+

@@ -20,7 +20,7 @@ from django.urls import path, include
 from django.http import JsonResponse
 
 
-def home():
+def home(request):
     """Simple view to check if the backend is running."""
     return JsonResponse({"message": "NayaViewAnime Backend is running."})
 

@@ -43,8 +43,6 @@ pipeline {
                 --env-file /var/jenkins_home/.env \
                 -p 8000:8000 \
                 nayaview_django
-
-
             '''
         }
     }

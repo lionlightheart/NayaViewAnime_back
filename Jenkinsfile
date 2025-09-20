@@ -40,7 +40,7 @@ pipeline {
             echo "Ejecutando contenedor Django..."
             docker run -d --name nayaview_django \
                 --network django_red \
-                --env-file /var/jenkins_home/.env \
+                --env-file ~/nayaview_anime/.env \
                 -p 8000:8000 \
                 nayaview_django
             '''

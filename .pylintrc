@@ -1,0 +1,43 @@
+[MASTER]
+# Módulos que pylint debe ignorar
+ignore=migrations
+
+# Extensiones opcionales
+load-plugins=pylint_django
+
+# Número máximo de recursiones para analizar código
+max-args=7
+
+[MESSAGES CONTROL]
+# Desactiva mensajes demasiado estrictos o molestos
+disable=
+    missing-docstring,        # desactiva docstrings obligatorios
+    invalid-name,             # nombres de variables cortos permitidos
+    too-few-public-methods,   # desactiva clases con pocos métodos
+    too-many-arguments,       # relaja límite de argumentos de funciones
+    no-member,                # pylint_django se encarga de esto
+    too-many-instance-attributes
+
+[FORMAT]
+# Máximo de caracteres por línea
+max-line-length=80
+# Tipo de comillas preferidas
+
+[DESIGN]
+# Relaja restricciones de diseño
+max-parents=7
+max-branches=15
+max-locals=25
+max-returns=10
+max-statements=50
+
+[TYPECHECK]
+# Para que pylint_django entienda modelos y ORM
+ignored-classes=ForeignKey,ManyToManyField,OneToOneField
+
+[REPORTS]
+# Solo muestra resumen útil
+reports=no
+
+[pylint.extensions.django]
+django-settings-module=NayaViewAnime_Back.settings

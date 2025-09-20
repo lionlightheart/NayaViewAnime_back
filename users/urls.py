@@ -7,5 +7,5 @@ router.register(r'', UserViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),  # CRUD de usuarios
-    path("register/", RegisterView.as_view()),  # Registro
+    path("/register/", RegisterView.as_view(), name="register"),  # Registro
 ]
